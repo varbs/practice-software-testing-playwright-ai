@@ -45,7 +45,7 @@ This repository contains end-to-end tests built with **Playwright** and **Page O
 |------|------------|-------------|
 | **Normal User Flow** | TC-LOGIN-1 to TC-LOGIN-4 | Valid login, Google button visibility, register/forgot password navigation |
 | **Wrong/Missing Input** | TC-LOGIN-5 to TC-LOGIN-18 | Empty fields, invalid formats, unregistered users, SQL injection, edge cases |
-| **Keyboard & Accessibility** | TC-LOGIN-18 to TC-LOGIN-24 | Enter key submission, label association, aria-live, focus management, tab order |
+| **Keyboard & Accessibility** | TC-LOGIN-19 to TC-LOGIN-25 | Enter key submission, label association, aria-live, invalid-field marking, tab order |
 
 **Total: 25 test cases** (14 data-driven scenarios + 11 standalone tests)
 
@@ -71,7 +71,8 @@ Required `.env` variables:
 ```env
 BASE_URL=https://practicesoftwaretesting.com
 API_URL=https://api.practicesoftwaretesting.com
-CUSTOMER_EMAIL=your_email@example.com
+LOGIN_TEST_EMAIL=your_email@example.com
+NEGATIVE_TEST_EMAIL=another_email@example.com
 PASSWORD=your_password
 ```
 

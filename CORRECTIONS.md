@@ -15,3 +15,7 @@
 | 2025-11-25 | TC-LOGIN-23 | Expected focus to always move to first invalid field | Site behavior varies; made conditional - passes if error visible |
 | 2025-11-25 | TC-LOGIN-24 | Assumed tab order: email → password → login button | Actual DOM order: email → Google button → login button → register → forgot password |
 | 2025-11-25 | TC-LOGIN-18/19 | Enter key tests didn't wait for navigation | Added accountPage verification after Enter key press |
+| 2026-11-25 | TC-LOGIN-18 | Data-driven loop (5–18) and Enter-key test both used TC-LOGIN-18 | Keyboard & accessibility tests renumbered to TC-LOGIN-19..25 |
+| 2026-11-25 | TC-LOGIN-25 (was 24) | Tab-order test had no assertion; `page.evaluate(() => document.activeElement)` returns undefined; recorded order (email → Google button) was wrong | Asserts `toBeFocused()` on the real order: email → password → show-password toggle → Login → Register → Forgot password |
+| 2026-11-25 | TC-LOGIN-24 (was 23) | Focus assertions wrapped in try/catch, so the test could never fail; the site keeps focus on Login after an empty submit | Now asserts both field errors are shown and both inputs get `aria-invalid="true"` |
+| 2026-11-25 | All | Debug `count()`/`console.log` left in `verifyErrorMessageVisible`; unused `waitForLoad` (networkidle) and focus helpers | Removed |

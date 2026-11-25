@@ -19,7 +19,8 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      # Successful-login tests are blocked by Cloudflare on GitHub runners; run them locally.
+      run: npx playwright test --grep-invert @needs-real-browser
       env:
         BASE_URL: ${{ vars.BASE_URL }}
         API_URL: ${{ vars.API_URL }}

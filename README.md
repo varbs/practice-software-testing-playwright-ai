@@ -83,6 +83,7 @@ PASSWORD=your_password
 | `npx playwright test tests/login.spec.js` | Run login tests only |
 | `npx playwright test --repeat-each=3` | Run each test 3 times (flakiness check) |
 | `npx playwright test --headed` | Run with browser visible |
+| `npx playwright test --grep-invert @needs-real-browser` | What CI runs: skips tests tagged `@needs-real-browser` (successful login is blocked by Cloudflare on GitHub runners, so run those locally) |
 | `npx playwright test --debug` | Debug mode with Playwright Inspector |
 | `npx playwright show-report` | View HTML report |
 

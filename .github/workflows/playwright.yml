@@ -23,8 +23,10 @@ jobs:
       env:
         BASE_URL: ${{ vars.BASE_URL }}
         API_URL: ${{ vars.API_URL }}
-        CUSTOMER_EMAIL: ${{ secrets.CUSTOMER_EMAIL }}
+        LOGIN_TEST_EMAIL: ${{ secrets.LOGIN_TEST_EMAIL }}
         PASSWORD: ${{ secrets.PASSWORD }}
+        NEGATIVE_TEST_EMAIL: ${{ secrets.NEGATIVE_TEST_EMAIL }}
+        NEGATIVE_PASSWORD: ${{ secrets.NEGATIVE_PASSWORD }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

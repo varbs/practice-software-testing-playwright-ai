@@ -8,13 +8,13 @@ test.describe('Normal User Flow', () => {
   });
 
   test('TC-LOGIN-1 - Verify registered customer logs in and sees their account page', async ({ loginPage, accountPage }) => {
-    const { CUSTOMER_EMAIL , PASSWORD} = process.env;
+    const { LOGIN_TEST_EMAIL , PASSWORD} = process.env;
 
-    if (!CUSTOMER_EMAIL || !PASSWORD) {
-      throw new Error('CUSTOMER_EMAIL and PASSWORD must be set in .env');
+    if (!LOGIN_TEST_EMAIL || !PASSWORD) {
+      throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');
     }
 
-    await loginPage.login(CUSTOMER_EMAIL, PASSWORD);
+    await loginPage.login(LOGIN_TEST_EMAIL, PASSWORD);
     await accountPage.verifyAccountPageIsVisible();
 
   });
@@ -36,9 +36,9 @@ test.describe('Normal User Flow', () => {
 
 test.describe('Login with wrong or Missing input', () => {
   test.beforeEach(async ({ loginPage }) => {
-    const { CUSTOMER_EMAIL, PASSWORD } = process.env;
-    if (!CUSTOMER_EMAIL || !PASSWORD) {
-      throw new Error('CUSTOMER _EMAIL, and PASSWORD must be set in .env');
+    const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
+    if (!LOGIN_TEST_EMAIL || !PASSWORD) {
+      throw new Error('LOGIN_TEST_EMAIL, and PASSWORD must be set in .env');
     }
 
     await loginPage.goto('/auth/login');
@@ -62,24 +62,24 @@ test.describe('Keyboard and Accessibility', () => {
   });
 
   test('TC-LOGIN-18 - Verify Enter key in email field submits form', async ({ loginPage, accountPage }) => {
-    const { CUSTOMER_EMAIL, PASSWORD } = process.env;
-    if (!CUSTOMER_EMAIL || !PASSWORD) {
-      throw new Error('CUSTOMER_EMAIL and PASSWORD must be set in .env');
+    const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
+    if (!LOGIN_TEST_EMAIL || !PASSWORD) {
+      throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');
     }
 
-    await loginPage.emailInput.fill(CUSTOMER_EMAIL);
+    await loginPage.emailInput.fill(LOGIN_TEST_EMAIL);
     await loginPage.passwordInput.fill(PASSWORD);
     await loginPage.pressEnterInEmail();
     await accountPage.verifyAccountPageIsVisible();
   });
 
   test('TC-LOGIN-19 - Verify Enter key in password field submits form', async ({ loginPage, accountPage }) => {
-    const { CUSTOMER_EMAIL, PASSWORD } = process.env;
-    if (!CUSTOMER_EMAIL || !PASSWORD) {
-      throw new Error('CUSTOMER_EMAIL and PASSWORD must be set in .env');
+    const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
+    if (!LOGIN_TEST_EMAIL || !PASSWORD) {
+      throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');
     }
 
-    await loginPage.emailInput.fill(CUSTOMER_EMAIL);
+    await loginPage.emailInput.fill(LOGIN_TEST_EMAIL);
     await loginPage.passwordInput.fill(PASSWORD);
     await loginPage.pressEnterInPassword();
     await accountPage.verifyAccountPageIsVisible();

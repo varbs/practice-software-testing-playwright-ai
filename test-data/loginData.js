@@ -9,7 +9,7 @@ const invalidLoginScenarios = [
     },
     {
         description: 'empty password',
-        email: process.env.CUSTOMER_EMAIL,
+        email: process.env.NEGATIVE_TEST_EMAIL,
         password: '',
         errorOn: 'password',
         expectedError: 'Password is required'
@@ -68,7 +68,7 @@ const invalidLoginScenarios = [
     },
     {
         description: 'special characters in password (!@#$%^&*)',
-        email: process.env.CUSTOMER_EMAIL,
+        email: process.env.NEGATIVE_TEST_EMAIL,
         password: 'Test!@#$%^&*()',
         errorOn: 'form',
         expectedError: 'Invalid email or password'

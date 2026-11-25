@@ -7,7 +7,6 @@ class LoginPage extends BasePage {
     this.emailInput = page.getByTestId('email');
     this.passwordInput = page.getByTestId('password');
     this.loginButton = page.getByTestId('login-submit');
-    //this.accountPageIndicator = page.getByTestId('page-title');
 
     this.googleButton = page.getByRole('button', { name: 'Sign in with Google' });
 
@@ -26,9 +25,6 @@ class LoginPage extends BasePage {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
-    await this.page.waitForLoadState('networkidle');
-    // Debug: log URL
-    console.log('After login, URL:', this.page.url());
   }
 
   async clickRegister() {

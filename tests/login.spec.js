@@ -46,12 +46,8 @@ test.describe('Login with wrong or Missing input', () => {
     await loginPage.goto('/auth/login');
   });
 
-  let number = 5;
-
   for (const scenario of invalidLoginScenarios) {
-    const title = `TC-LOGIN-${number++} - Verify error with ${scenario.description}`;
-
-    test(title, async ({ loginPage }) => {
+    test(`${scenario.id} - Verify error with ${scenario.description}`, async ({ loginPage }) => {
       await loginPage.login(scenario.email, scenario.password);
       await loginPage.verifyErrorMessageVisible(scenario.errorOn, scenario.expectedError);
     });

@@ -1,13 +1,15 @@
 const { test, expect } = require('../fixtures/fixture');
 const { invalidLoginScenarios } = require('../test-data/loginData');
 
+// @needs-real-browser: successful login is blocked by a Cloudflare bot check on
+// GitHub-hosted runners, so CI skips these tests. Run them locally.
 test.describe('Normal User Flow', () => {
 
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.goto('/auth/login');
   });
 
-  test('TC-LOGIN-1 - Verify registered customer logs in and sees their account page', async ({ loginPage, accountPage }) => {
+  test('TC-LOGIN-1 - Verify registered customer logs in and sees their account page', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
     const { LOGIN_TEST_EMAIL , PASSWORD} = process.env;
 
     if (!LOGIN_TEST_EMAIL || !PASSWORD) {
@@ -61,7 +63,7 @@ test.describe('Keyboard and Accessibility', () => {
     await loginPage.goto('/auth/login');
   });
 
-  test('TC-LOGIN-18 - Verify Enter key in email field submits form', async ({ loginPage, accountPage }) => {
+  test('TC-LOGIN-18 - Verify Enter key in email field submits form', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
     const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
     if (!LOGIN_TEST_EMAIL || !PASSWORD) {
       throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');
@@ -73,7 +75,7 @@ test.describe('Keyboard and Accessibility', () => {
     await accountPage.verifyAccountPageIsVisible();
   });
 
-  test('TC-LOGIN-19 - Verify Enter key in password field submits form', async ({ loginPage, accountPage }) => {
+  test('TC-LOGIN-19 - Verify Enter key in password field submits form', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
     const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
     if (!LOGIN_TEST_EMAIL || !PASSWORD) {
       throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');

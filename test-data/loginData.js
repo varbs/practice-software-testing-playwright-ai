@@ -68,7 +68,7 @@ const invalidLoginScenarios = [
     },
     {
         description: 'special characters in password (!@#$%^&*)',
-        email: process.env.NEGATIVE_TEST_EMAIL,
+        email: 'test+user.name@example.com',
         password: 'Test!@#$%^&*()',
         errorOn: 'form',
         expectedError: 'Invalid email or password'

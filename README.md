@@ -121,6 +121,7 @@ retries: 1,
 Data-driven tests in `test-data/loginData.js`:
 ```javascript
 {
+  id: 'TC-LOGIN-5',
   description: 'empty email',
   email: '',
   password: process.env.PASSWORD,
@@ -132,7 +133,7 @@ Data-driven tests in `test-data/loginData.js`:
 Reused via loop in `tests/login.spec.js`:
 ```javascript
 for (const scenario of invalidLoginScenarios) {
-  test(`TC-LOGIN-${number++} - Verify error with ${scenario.description}`, ...)
+  test(`TC-LOGIN-${scenario.id} - Verify error with ${scenario.description}`, ...)
 }
 ```
 

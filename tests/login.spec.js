@@ -38,9 +38,9 @@ test.describe('Normal User Flow', () => {
 
 test.describe('Login with wrong or Missing input', () => {
   test.beforeEach(async ({ loginPage }) => {
-    const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
-    if (!LOGIN_TEST_EMAIL || !PASSWORD) {
-      throw new Error('LOGIN_TEST_EMAIL, and PASSWORD must be set in .env');
+    const { NEGATIVE_TEST_EMAIL, PASSWORD } = process.env;
+    if (!NEGATIVE_TEST_EMAIL || !PASSWORD) {
+      throw new Error('NEGATIVE_TEST_EMAIL and PASSWORD must be set in .env');
     }
 
     await loginPage.goto('/auth/login');
@@ -49,7 +49,7 @@ test.describe('Login with wrong or Missing input', () => {
   let number = 5;
 
   for (const scenario of invalidLoginScenarios) {
-    const title = `TC-LOGIN-${number++} - Verify error with ${scenario.description} `;
+    const title = `TC-LOGIN-${number++} - Verify error with ${scenario.description}`;
 
     test(title, async ({ loginPage }) => {
       await loginPage.login(scenario.email, scenario.password);
@@ -63,7 +63,7 @@ test.describe('Keyboard and Accessibility', () => {
     await loginPage.goto('/auth/login');
   });
 
-  test('TC-LOGIN-18 - Verify Enter key in email field submits form', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
+  test('TC-LOGIN-19 - Verify Enter key in email field submits form', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
     const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
     if (!LOGIN_TEST_EMAIL || !PASSWORD) {
       throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');
@@ -75,7 +75,7 @@ test.describe('Keyboard and Accessibility', () => {
     await accountPage.verifyAccountPageIsVisible();
   });
 
-  test('TC-LOGIN-19 - Verify Enter key in password field submits form', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
+  test('TC-LOGIN-20 - Verify Enter key in password field submits form', { tag: '@needs-real-browser' }, async ({ loginPage, accountPage }) => {
     const { LOGIN_TEST_EMAIL, PASSWORD } = process.env;
     if (!LOGIN_TEST_EMAIL || !PASSWORD) {
       throw new Error('LOGIN_TEST_EMAIL and PASSWORD must be set in .env');
@@ -87,26 +87,26 @@ test.describe('Keyboard and Accessibility', () => {
     await accountPage.verifyAccountPageIsVisible();
   });
 
-  test('TC-LOGIN-20 - Verify email field has associated label', async ({ loginPage }) => {
+  test('TC-LOGIN-21 - Verify email field has associated label', async ({ loginPage }) => {
     await loginPage.verifyEmailLabelExists();
   });
 
-  test('TC-LOGIN-21 - Verify password field has associated label', async ({ loginPage }) => {
+  test('TC-LOGIN-22 - Verify password field has associated label', async ({ loginPage }) => {
     await loginPage.verifyPasswordLabelExists();
   });
 
-  test('TC-LOGIN-22 - Verify form error has aria-live for screen readers', async ({ loginPage }) => {
+  test('TC-LOGIN-23 - Verify form error has aria-live for screen readers', async ({ loginPage }) => {
     await loginPage.login('unregistered_customer@example.com', 'wrongPassword!');
     await loginPage.verifyErrorHasAriaLive();
   });
 
-  test('TC-LOGIN-23 - Verify focus moves to first invalid field on error', async ({ loginPage }) => {
+  test('TC-LOGIN-24 - Verify empty submit marks both fields invalid for screen readers', async ({ loginPage }) => {
     await loginPage.login('', '');
-    await loginPage.verifyFocusOnFirstError();
+    await loginPage.verifyFieldsMarkedInvalid();
   });
 
-  test('TC-LOGIN-24 - Verify tab order through all interactive elements', async ({ loginPage }) => {
-    await loginPage.tabThroughFields();
+  test('TC-LOGIN-25 - Verify tab order through all interactive elements', async ({ loginPage }) => {
+    await loginPage.verifyTabOrder();
   });
 });
 

@@ -1,0 +1,24 @@
+{
+  "name": "practice-software-testing-playwright-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varbs/practice-software-testing-playwright-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/varbs/practice-software-testing-playwright-ai/issues"
+  },
+  "homepage": "https://github.com/varbs/practice-software-testing-playwright-ai#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.6",
+    "dotenv": "^18.0.10"
+  }
+}
